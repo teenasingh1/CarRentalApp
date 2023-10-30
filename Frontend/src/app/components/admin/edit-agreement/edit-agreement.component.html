@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+                <a class="btn btn-outline btn-transparent" [routerLink]="['/admin']">Back</a>
+                <h2 class="text-center">{{agreement.car.name}}</h2>
+                <img src={{agreement.car.carImage}} alt="not found" style="width:300px;height: 300px; border-radius:4px">
+                
+                <!-- Car Details -->
+                <h4>₹{{agreement.car.rentalPrice}}<span>/hr</span> </h4>
+                <p>
+                    Maker: {{agreement.car.maker?agreement.car.maker.makerName:"Not Defined"}}
+                    <br>
+                    Model No: {{agreement.car.model?agreement.car.model.modelName:"Not Defined"}}
+                </p>
+                
+                <div class="form">
+                    <form action="">
+                        <div class="form-control"  >
+                            <label for="startDate"> From</label>
+                            <input name="startDate" [max]="agreement.endDate" [value]="agreement.startDate" id="startDate"[(ngModel)]="agreement.startDate" type="date">
+                        </div>
+                        <div class="form-control">
+                            <label for="endDate"> To</label>
+                            
+                            <input name="endDate" [min]="agreement.startDate" [value]="agreement.endDate" [disabled]="agreement.startDate==null"     id="endDate" [(ngModel)]="agreement.endDate" type="date">
+                        </div>
+                        <div class="form-control">
+                            <button class="btn btn-primary" (click)="handleUpdate()" >Submit</button>
+                        </div>
+                    </form>
+                </div>
+            
+        </div>
+    </div>
+</div>

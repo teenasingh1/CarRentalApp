@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div  class="container mt-4" >
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center" >
+            
+                <div class="input-group"   >
+                
+                    <div class="selection" style="margin-left: 50px;" >
+                        <select name="model" [(ngModel)]="modelSelected"  class="form-select">
+                            <option disabled value="-1">   Select Model   </option>
+                            <option *ngFor="let model of modelList" [value]="model.id"> {{model.modelName}} </option>
+                        </select>
+                    </div>
+
+                    <div class="selection" style="margin-left: 50px;" >
+                        <select name="maker" [(ngModel)]="makerSelected" class="form-select br-10" style="border-radius: 5px;">
+                            <option disabled value="-1">   Select Maker   </option>
+                            <option *ngFor="let maker of makerList" [value]="maker.id"> {{maker.makerName}} </option>                        
+                        </select>
+                    </div>
+
+                    <div class="selection" style="margin-left: 50px;">
+                        <select name="rentaPrice" [(ngModel)]="rentalPrice" class="form-select br-10" style="border-radius: 5px;">
+                            <option disabled value="-1">   Select Rental Price   </option>                     
+                            <option value=200> Less than 200</option>
+                            <option value=300> Less than 300</option>
+                            <option value=400> Less than 400</option>   
+                            <option value=500> Less than 500</option>   
+                            <option value=600> Less than 600</option>   
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-danger" *ngIf="rentalPrice!=-1|| modelSelected!=-1 || makerSelected!=-1" (click)="removeSearchFilter()"><i class="fa-solid fa-x"></i></button>
+                    <button type="button" class="btn btn-transparent-outline mx-3" (click)="handleSearch()">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #010312; ;"></i>
+                    </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container "   >
+    <div class="row mt-2 offset-1"  >
+        <ng-container style="background-color: blueviolet;" *ngFor="let car of carList"  >
+
+            <div class="card col-md-3 me-4 ">
+                <img class="card-img-top mt-2" src="{{car.carImage}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{car.name}}</h5>
+                    <p class="card-text">
+                    <span><b>{{car.rentalPrice}}₹/hr</b></span>
+                    <br>
+                    <span>Manufacturer <b>{{car.maker?car.maker.makerName:"Not Available"}}</b> </span>
+                    <br>
+                    <span>Model <b>{{car.model? car.model.modelName: "Not Available"}}</b></span>
+                    </p>
+                    <a *ngIf="car.agreementStatus==2" [routerLink]="['booking',car.id]" class="btn btn-primary">Book Now</a>
+                    <button *ngIf="car.agreementStatus!=2" disabled class="btn btn-primary">Already Booked</button>
+                </div>
+            </div>
+
+        </ng-container>
+    </div>
+</div>

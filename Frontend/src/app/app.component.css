@@ -1,0 +1,11 @@
+.allcars{
+    display:flex;
+    flex-direction: row;
+}
+.cards{
+    padding: 4px 5px;
+}
+.cards img{
+    width: 200px;
+    height: 200px
+}

@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="row m-0 w-100 mx-auto my-auto">
+    <div class="col-md-4 offset-4 mt-5 ">
+      <h2  style="text-align: center;" >Log In</h2>
+
+      <form [formGroup]="formModel" autocomplete="off"  style="text-align: center;" (submit)="onSubmit()">
+        
+        <!-- Email Form Group -->
+        <div class="form-floating form-group required">
+            <input type="email" class="form-control" id="floatingInput"  formControlName="Email" placeholder="email" required>
+            <label for="floatingInput">Email</label>
+            <!-- Email Validations  -->
+            <span *ngIf="formModel.controls.Email.touched">
+              <span class="text-danger"*ngIf="formModel.controls.Email.errors?.['required']">Field is mandatory</span>
+              <span class="text-danger"*ngIf="formModel.controls.Email.errors?.['email']">Email is incorrect</span>
+            </span>
+            </div>
+
+        <!-- Password Form Group -->
+        <div class="form-floating form-group required">
+          <input type="password" class="form-control" id="floatingPassword"  formControlName="Password" required="" placeholder="password">
+          <label for="floatingPassword"> Password</label>
+          <span class="text-danger" *ngIf="formModel.get('Password')?.touched && formModel.get('Password')?.errors?.['required']">This field is mandatory.</span>
+          <span class="text-danger" *ngIf="formModel.get('Password')?.touched && formModel.get('Password')?.errors?.['minlength']">Minimum 4 characters required.</span>
+        </div>
+        
+        
+        <input class="btn btn-outline-info mt-2" type="submit" value="Login" />
+      </form>
+    </div>
+  </div>

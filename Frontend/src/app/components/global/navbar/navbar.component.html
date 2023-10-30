@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" >
+    <a class="navbar-brand ms-3" [routerLink]="isAdmin?['/admin']:['/user']"><i class="fa-solid fa-car-on" style="font-size: 30px;"></i> Rent A Car</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li *ngIf="isAdmin" class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cars
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" >Action</a>
+            <a class="dropdown-item" >Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" >Something else here</a>
+          </div>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav mr-auto">
+        <span *ngIf="isAdmin" style="background-color:pink; border-radius: 10%; padding: 3px; margin-left: 5px;">Administrator</span>
+      </ul>
+      
+      
+    </div>
+    <a *ngIf="!isLogin" class="btn btn-dark" href='login'>Login</a>
+    <button *ngIf="isLogin&&!isAdmin" routerLink="/user/bookings" class="btn btn-primary p-1 me-3" >
+      <i style="font-size: 30px;" class="fa-solid fa-handshake"></i>
+      <div style="font-size: 10px;border: 1px solid black;" class="badge bg-danger">{{numberOfAgreementsUserHas}}</div>
+    </button>
+    <Button *ngIf="isLogin" class="btn btn-dark" (click)="Logout()" >Logout</Button>
+  </nav>
+  

@@ -1,0 +1,44 @@
+
+.card{
+    padding:10px;
+    margin:8px;
+    /* margin-bottom: 9px; */
+    box-shadow: 0px 0px 5px grey;
+}
+.card img{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 14px;
+    transition: 0.3s ease-in-out;
+    text-overflow: hidden;
+}
+.card img:hover{
+    transition: 0.3s ease-in-out;
+    scale: 1.1;
+}
+
+.selection{
+    width:30ch;
+    color: black;
+    
+}
+
+.form-select{
+    text-align: center;
+}
+
+.input-group{
+    display:flex; 
+    flex-direction: row; 
+    padding:5px;
+    background-color: aqua; 
+    width: fit-content; 
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
